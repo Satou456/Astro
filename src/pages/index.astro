@@ -1,5 +1,9 @@
 ---
+import "../styles/global.css"
 const pageTitle = "首页 - Astro";
+const color = "red"
+const fontWeight = "bold";
+const fontSize = "2rem";
 ---
 
 <html lang="zh-cn">
@@ -9,13 +13,23 @@ const pageTitle = "首页 - Astro";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style define:vars={{color, fontWeight, fontSize}}>
+			p {
+				margin: 1em 0;
+				color: var(--color);
+				font-weight: var(--fontWeight);
+				font-size: var(--fontSize);
+			}
+		</style>
 	</head>
 	<body>
 		<a href="/">首页</a>
-    	<a href="/about/">关于</a>
-		<a href="/blog/">博客</a>
+		<a href="/blog/">博客</a>    	
+		<a href="/about/">关于</a>
+
 
 		<h1>Astro</h1>
 		<h1>我的Astro站点</h1>
+		<p>欢迎来到我的Astro站点！</p>
 	</body>
 </html>
