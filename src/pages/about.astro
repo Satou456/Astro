@@ -1,12 +1,27 @@
 ---
+const pageTitle = "关于 - Astro";
+
+const identity = {
+  firstName: "Satou",
+  country: "加拿大",
+  occupation: "技术撰稿人",
+  hobbies: ["摄影", "观鸟", "棒球"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const score = 3;
 ---
+
 <html lang="zh-cn">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>关于 - Astro</title>
+        <title>{pageTitle}</title>
     </head>
     <body>
         <a href="/">首页</a>
@@ -16,5 +31,24 @@
         <h1>关于我们</h1>
         <h2>欢迎来到关于我们页面</h2>
         <p>我正在学习如何使用Astro构建网站。</p>
+
+        <p>以下是关于我的几个事实：</p>
+        <ul>
+            <li>我的名字是{identity.firstName}.</li>
+            <li>我住在{identity.country}。我的职业是{identity.occupation}。</li>
+            {identity.hobbies.length >= 2 &&
+                <li>我的两个习惯：{identity.hobbies[0]}和{identity.hobbies[1]}</li>
+            }
+        </ul>
+            <p>我的技能是：</p>
+        <ul>
+            {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+
+        {happy && <p>我非常乐意学习 Astro！</p>}
+
+        {finished && <p>我完成了这节教程！</p>}
+
+        {score === 1 ? <p>我的目标是在三天内完成。</p> : <p>我的目标不是 3 天。</p>}
     </body>
 </html>
