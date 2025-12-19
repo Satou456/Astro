@@ -1,40 +1,21 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import "../styles/global.css"
-
-const pageTitle = "首页 - Astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "首页";
 const color = "red"
 const fontWeight = "bold";
 const fontSize = "2rem";
 ---
+<BaseLayout pageTitle={pageTitle}>
+	<style define:vars={{color, fontWeight, fontSize}}>
+		p {
+			margin: 1em 0;
+			color: var(--color);
+			font-weight: var(--fontWeight);
+			font-size: var(--fontSize);
+		}
+	</style>
 
-<html lang="zh-cn">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style define:vars={{color, fontWeight, fontSize}}>
-			p {
-				margin: 1em 0;
-				color: var(--color);
-				font-weight: var(--fontWeight);
-				font-size: var(--fontSize);
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-
-		<h1>Astro</h1>
-		<h1>我的Astro站点</h1>
-		<p>欢迎来到我的Astro站点！</p>
-
-		<Footer />
-		<script>
-			import "../scripts/menu.js";			
-		</script>
-	</body>
-</html>
+	<h1>Astro</h1>
+	<h1>我的Astro站点</h1>
+	<p>欢迎来到我的Astro站点!</p>
+</BaseLayout>
